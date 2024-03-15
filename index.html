@@ -92,11 +92,11 @@
         <h3 class="title is-2">Abstract</h3>
         <div class="content has-text-justified">
           <p>
-            In this work, we present DiPPeR, a novel and fast 2D path planning framework for quadrupedal locomotion, leveraging diffusion-driven techniques. Our contributions include a scalable dataset generator for map images and corresponding trajectories, an image-conditioned diffusion planner for mobile robots, and a training/inference pipeline employing CNNs. We validate our approach in several mazes, as well as in real-world deployment scenarios on Boston Dynamic's Spot and Unitree's Go1 robots. DiPPeR performs on average 23 times faster for trajectory generation against both search based and data driven path planning algorithms with an average of 87% consistency in producing feasible paths of various length in maps of variable size, and obstacle structure.
+            Social navigation in robotics primarily involves guiding mobile robots through human-populated areas, balancing pedestrian comfort with efficient path-finding. While this field has seen diverse approaches, a solution for seamless integration of robots into pedestrian settings remains elusive. In this paper, we develop a social force model to a quadruped legged robot, utilising visual perception for human localisation. In particular, we introduce an augmented social force model that incorporates refined interpretations of repulsive forces and avoidance behaviours based on pedestrian actions, alongside a target following mechanism. Extensive evaluations on a Boston Dynamics Spot quadruped legged robot, through various scenarios, including interactions with oncoming pedestrians, crowds, and obstructed paths, demonstrate that the proposed augmented model significantly improves upon the previous state-of-the-art methods in terms of chosen path length, average velocity, and time-to-goal for effective and efficient social navigation.
           </p>
           <br>
           <p>
-           In the following sections we present DiPPeRs performance and genarilisation capabilities.
+           In the following sections we present the ASFM for social navigation and compare it with the standard social force model.
           </p>
         </div>
         <div class="is-centered">
@@ -111,42 +111,7 @@
   </div>
 
 
-<section class="section">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <br> <br>
-        <h3 class="title is-2" style="text-align: center; padding-bottom: 10px;">Real World Deployment</h3>
-         <h5>
-            <center>
-              DiPPeR is integrated into the 2D ROS Navigation Stack, serving as the global path planner. 
-              When provided with the occupancy map, DiPPeR generates an initial global path. 
-              This path is subsequently fine-tuned by the TEB local planner to ensure the avoidance of violations 
-              of the robot's kinodynamic constraints. Additionally, the Phasespace Localisation system is employed 
-              to mitigate for state estimation inaccuracies.
-            </center>
-         </h5>
-          <td>
-              <div class="row">
-                  <video autoplay muted loop playsinline controls src="./resources/real_world/map1go1.mp4" width="100%"
-                         style="border-radius:10px; "></video>
-              </div>
-              <div class="row">
-                <video autoplay muted loop playsinline controls src="./resources/real_world/map2spot.mp4" width="100%"
-                       style="border-radius:10px; "></video>
-              </div>
-              <div class="row">
-                <video autoplay muted loop playsinline controls src="./resources/real_world/map3spot.mp4" width="100%"
-                       style="border-radius:10px; "></video>
-         
-            </div>
-            <br>
-          </td>
-        </tr>
-      </div> 
-    </div>
-  </div>
-</section>
+
 
 <section class="section" id="BibTeX">
   <div class="container content">
