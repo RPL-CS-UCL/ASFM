@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F28Q22D1LS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-F28Q22D1LS');
+  </script>
+  <meta charset="utf-8">
+  <meta name="description" content="DiPPeR: Diffusion-based 2D Path Planner applied on Legged Robots">
+  <meta name="keywords" content="Path Planing, Diffusion, Quadrupedal Robots">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DiPPeR: Diffusion-based 2D Path Planner&#10;applied on Legged Robots</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="./static/js/ajax.googleapis.com_ajax_libs_jquery_3.5.1_jquery.min.js"></script>
+  <script src="./static/js/isInViewport.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <link rel="icon" href="./favicon.ico?">
+  
+</head>
+<body>
+  
+  
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">DiPPeR: Diffusion-based 2D Path Planner <br> applied on Legged Robots</h1>
+          <div class="is-size-4 publication-authors">
+            <span class="author-block">
+              <a href="https://rpl-as-ucl.github.io/people/">Jianwei Liu*</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="https://rpl-as-ucl.github.io/people/">Maria Stamatopoulou*</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="https://dkanou.github.io/">Dimitrios Kanoulas</a>
+              <br><br>
+              <img src="./resources/rpl-ucl-logo.png" width="600"></img>
+              <!-- <span class="brmod"><b>ICRA 2024 Submission</b></span> -->
+            </span>
+          </div>
+
+<div class="column has-text-centered">
+<!-- arXiv Link. -->
+  <span class="link-block">
+    <a href="http://arxiv.org/abs/2310.07842"
+      class="external-link button is-normal is-rounded is-dark">
+      <span class="icon">
+        <i class="ai ai-arxiv"></i>
+      </span>
+      <span>arXiv</span>
+    </a>
+  </span>
+
+  <!-- Video Link. -->
+  <span class="link-block">
+    <a href="https://youtu.be/alTwmPyMnig?si=JM_fFBjeDMlrk55H"
+      class="external-link button is-normal is-rounded is-dark">
+      <span class="icon">
+        <i class="fab fa-youtube"></i>
+      </span>
+      <span>Video</span>
+    </a>
+  </span>
+</div>       
+  
+<section class="section">
+  <div class="container">
+    <br>
+    <br>
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <h3 class="title is-2">Abstract</h3>
+        <div class="content has-text-justified">
+          <p>
+            In this work, we present DiPPeR, a novel and fast 2D path planning framework for quadrupedal locomotion, leveraging diffusion-driven techniques. Our contributions include a scalable dataset generator for map images and corresponding trajectories, an image-conditioned diffusion planner for mobile robots, and a training/inference pipeline employing CNNs. We validate our approach in several mazes, as well as in real-world deployment scenarios on Boston Dynamic's Spot and Unitree's Go1 robots. DiPPeR performs on average 23 times faster for trajectory generation against both search based and data driven path planning algorithms with an average of 87% consistency in producing feasible paths of various length in maps of variable size, and obstacle structure.
+          </p>
+          <br>
+          <p>
+           In the following sections we present DiPPeRs performance and genarilisation capabilities.
+          </p>
+        </div>
+        <div class="is-centered">
+          <!--<center>
+          <video autoplay muted loop playsinline controls poster="./resources/loading-icon.gif" style="width: 95%; border: 1px solid #bbb; border-radius: 10px; margin: 2.0%;">
+          <source src="./resources/real_world/map2spot.mp4" type="video/mov">
+          </video>
+          </center>--> 
+      </div>
+      </div>
+    </div>
+  </div>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-2" style="text-align: center; padding-bottom: 10px;">Validation Dataset</h2>
+        <br>
+        <h5>
+          <center>
+           We validate DiPPeR's performance on maps on the Validation Datase, which comprises of maps 
+           not previously encountered <br> during the training but share a similar structural 
+           pattern with those in the Training Dataset. 
+          </center>
+        </h5>
+        <br></br>
+        <h3 class="title" style="text-align: center; padding-bottom: 7px;">Short Trajectories</h3>
+        <h5>
+          <center>
+           Path Length < 100
+          </center>
+        </h5>
+        <br>
+        <td>
+            <div class="row">
+              <div class="col">
+                  <video autoplay muted loop playsinline controls src="./resources/short/VAL_1_short.mp4" width="100%"
+                         style="border-radius:10px; "></video>
+              </div>
+              <div class="col">
+                <video autoplay muted loop playsinline controls src="./resources/short/VAL_9_short.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+              </div>
+              <div class="col">
+                <video autoplay muted loop playsinline controls src="./resources/short/VAL_10_short.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </div> 
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h3 class="title" style="text-align: center; padding-bottom: 7px;">Medium Trajectories</h3>
+        <h5>
+          <center>
+           100 < Path Length < 200
+          </center>
+        </h5>
+        <br>
+          <td>
+            <div class="row">
+              <div class="col">
+                  <video autoplay muted loop playsinline controls src="./resources/medium/VAL_4_midium.mp4" width="100%"
+                         style="border-radius:10px; "></video>
+              </div>
+              <div class="col">
+                <video autoplay muted loop playsinline controls src="./resources/medium/VAL_8_midium.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+              </div>
+              <div class="col">
+                <video autoplay muted loop playsinline controls src="./resources/medium/VAL_7_midium.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </div> 
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h3 class="title" style="text-align: center; padding-bottom: 7px;">Long Trajectories</h3>
+        <h5>
+          <center>
+           Path Length > 200
+          </center>
+        </h5>
+        <br></br>
+          <td>
+            <div class="row">
+              <div class="col">
+                  <video autoplay muted loop playsinline controls src="./resources/long/lon2.mp4" width="100%"
+                         style="border-radius:10px; "></video>
+              </div>
+              <div class="col">
+                <video autoplay muted loop playsinline controls src="./resources/long/LONGUSE2.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+              </div>
+              <div class="col">
+                <video autoplay muted loop playsinline controls src="./resources/long/VAL_3_long.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+              </div>
+            </div>
+            <br>
+          </td>
+        </tr>
+      </div> 
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-2" style="text-align: center; padding-bottom: 10px;">Out-of-Distribution Dataset</h2>
+        <br>
+        <h5>
+         <center>
+           We evaluate DiPPeR's generalisation capabilities on maps that differ from those present in the Training Dataset. 
+           </center>
+        </h5>
+        <br></br>
+        <h3 class="title" style="text-align: center; padding-bottom: 7px;">OOD Dataset</h3>
+        <h5>
+          <center>
+            Dataset consist of maps of different size, obstacle structure and colour, to test the generalisation capabilities of DiPPeR.
+           </center>
+          </h5>
+          <td>
+            <div class="row">
+              <div class="col">
+                  <video autoplay muted loop playsinline controls src="./resources/ood/round_use.mp4" width="100%"
+                         style="border-radius:10px; "></video>
+              </div>
+              <div class="col">
+                <video autoplay muted loop playsinline controls src="./resources/ood/gen11.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+              </div>
+              <div class="col">
+                <video autoplay muted loop playsinline controls src="./resources/ood/GEN1_long.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </div> 
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+          <h3 class="title" style="text-align: center; padding-bottom: 7px;">MRPB Dataset</h3>
+          <h5>
+            <center>
+             Dataset used to compare DiPPeR's inference speed with that of A*, N-A* and ViT-A*.  
+             DiPPeR's inference time is 0.4s for all maps, regardless of their size,  
+             which is on average 23 times faster against the next best performing SOTA planners. 
+            </center>
+          </h5>
+          <br>   
+            <div class="row">
+              <div class="col">
+                  <video autoplay muted loop playsinline controls src="./resources/comparison/GEN5_mid.mp4" width="100%"
+                         style="border-radius:10px; "></video>
+              </div>
+              <div class="col">
+                <video autoplay muted loop playsinline controls src="./resources/comparison/GEN7.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+              </div>
+              <div class="col">
+                <video autoplay muted loop playsinline controls src="./resources/comparison/GEN6_1.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+              </div>
+               <div class="col">
+                <video autoplay muted loop playsinline controls src="./resources/comparison/GEN10.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+              </div>
+
+            </div>
+            <br>
+          </td>
+        </tr>
+      </div> 
+    </div>
+  </div>
+
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <br> <br>
+        <h3 class="title is-2" style="text-align: center; padding-bottom: 10px;">Real World Deployment</h3>
+         <h5>
+            <center>
+              DiPPeR is integrated into the 2D ROS Navigation Stack, serving as the global path planner. 
+              When provided with the occupancy map, DiPPeR generates an initial global path. 
+              This path is subsequently fine-tuned by the TEB local planner to ensure the avoidance of violations 
+              of the robot's kinodynamic constraints. Additionally, the Phasespace Localisation system is employed 
+              to mitigate for state estimation inaccuracies.
+            </center>
+         </h5>
+          <td>
+              <div class="row">
+                  <video autoplay muted loop playsinline controls src="./resources/real_world/map1go1.mp4" width="100%"
+                         style="border-radius:10px; "></video>
+              </div>
+              <div class="row">
+                <video autoplay muted loop playsinline controls src="./resources/real_world/map2spot.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+              </div>
+              <div class="row">
+                <video autoplay muted loop playsinline controls src="./resources/real_world/map3spot.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+         
+            </div>
+            <br>
+          </td>
+        </tr>
+      </div> 
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container content">
+    <div align="left";>
+
+    <h2 class="titile">BibTeX</h2>
+    <pre><code>
+      @article{liu2024dipper,
+      title     = {DiPPeR: Diffusion-based 2D Path Planner applied on Legged Robots},
+      author    = {Jianwei Liu, Maria Stamatopoulou, Dimitrios Kanoulas},
+      journal   = {arXiv preprint arXiv:2309.14341},
+      year      = {2024}
+}
+</div>
+</code></pre>
+  </div>
+</section>
+
+</body>
+
+</html>
