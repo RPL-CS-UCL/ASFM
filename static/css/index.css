@@ -181,8 +181,8 @@ body {
 }
 .video-container iframe {
   position: absolute;
-  top: 75;
-  left: 0;
+  top: 0;
+  left: 75;
   width: 75%;
   height: 75%;
   
