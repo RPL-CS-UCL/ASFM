@@ -174,7 +174,7 @@ body {
   margin-top: 0.5em;
 }
 
-.video-container {
+/* .video-container {
   position: relative;
   overflow: hidden;
   padding-top: 56.25%; /* 16:9 Aspect Ratio */
@@ -187,4 +187,4 @@ body {
   height: 75%;
   
   border: 0;
-}
+} */
